@@ -1,83 +1,93 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   big_sort2.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/25 09:43:14 by fleitz            #+#    #+#             */
+/*   Updated: 2022/02/25 12:16:11 by fleitz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_fonction3(t_stack **stack_a, t_stack **stack_b, t_args *info, int repere2, int save_a)
+void	ft_fonctiona(t_stack **stck_a, t_stack **stck_b, t_args *info, int *rp)
 {
-	int	r;
-	int	p;
+	while ((--rp[0] > 0 || rp[1] > 0) && info->newsize-- >= 0 && (*stck_b))
+	{
+		if (((*stck_a)->nbr > (*stck_b)->nbr || rp[1] - rp[0] == 0)
+			&& rp[1]-- > 0)
+			info->str = ft_string(stck_a, stck_b, info->str, "pa\n");
+		info->str = ft_string(stck_a, stck_b, info->str, "ra\n");
+	}
+}
+
+void	ft_fonctionb(t_stack **stck_a, t_stack **stck_b, t_args *info, int *rp)
+{
+	while ((--rp[0] > 0 || rp[1] > 0) && info->newsize-- >= 0 && (*stck_b))
+	{
+		if (((*stck_b)->nbr > (*stck_a)->nbr || rp[1] - rp[0] == 0)
+			&& rp[1]-- > 0)
+			info->str = ft_string(stck_a, stck_b, info->str, "pb\n");
+		info->str = ft_string(stck_a, stck_b, info->str, "rb\n");
+	}
+}
+
+void	ft_fonction3(t_stack **stack_a, t_stack **stack_b, t_args *info, int *s)
+{
+	int	rp[2];
 
 	if (info->newsize > 0 && (*stack_b))
 	{
-		r = info->newsize + 1;
-		p = 0;
-		while ((*stack_a)->nbr != save_a && p++ >= 0)
+		ft_memcpy(&rp, (int [2]){info->newsize + 1, 0}, sizeof(int) * 2);
+		while ((*stack_a)->nbr != s[1] && rp[1]++ >= 0)
 			*stack_a = (*stack_a)->next;
 		ft_back_one(stack_a);
-		if (repere2 == 2)
+		if (s[0] == 2)
 		{
-			while (--r > 0 || p > 0)
-			{
-				if (((*stack_b)->nbr > (*stack_a)->nbr || p - r == 0) && p-- > 0)
-					info->str = ft_string(stack_a, stack_b, info->str, "pb\n");
-				info->str = ft_string(stack_a, stack_b, info->str, "rb\n");
-			}
+			ft_fonctionb(stack_a, stack_b, info, rp);
 			return ;
 		}
-		p = info->newsize - p;
-		while ((--r > 0 || p > 0))
-		{
-			if (((*stack_a)->nbr > (*stack_b)->nbr || p - r == 0) && p-- > 0)
-				info->str = ft_string(stack_a, stack_b, info->str, "pa\n");
-			info->str = ft_string(stack_a, stack_b, info->str, "ra\n");
-		}
+		rp[1] = info->newsize - rp[1];
+		ft_fonctiona(stack_a, stack_b, info, rp);
 	}
+}
+
+int	ft_fonction4(t_stack **stack_b, int repere, t_args *info, int *save)
+{
+	if (info->newsize < repere && (*stack_b))
+	{
+		save[0] = 2;
+		return (1);
+	}
+	return (0);
 }
 
 void	ft_big_lists(t_stack **stack_a, t_stack **stack_b, t_args *info)
 {
-	int	repere;
-	int	p;
-	int	r;
-	int	save_a;
-	int	repere2;
+	int	rp[2];
+	int	save[3];
 
-	repere = 8;
+	save[2] = 8;
 	info->newsize = info->size;
-	repere2 = 1;
-	while (info->newsize >= repere && (*stack_b))
+	save[0] = 1;
+	while (info->newsize >= save[2] && (*stack_b))
 	{
+		save[1] = (*stack_b)->nbr;
 		if ((*stack_a)->nbr < (*stack_b)->nbr)
-			save_a = (*stack_a)->nbr;
-		else
-			save_a = (*stack_b)->nbr;
-		while (info->newsize >= repere && (*stack_b))
+			save[1] = (*stack_a)->nbr;
+		while (info->newsize >= save[2] && (*stack_b))
 		{
-			p = repere / 2;
-			r = repere + 1;
-			while ((--r > 0 || p > 0) && info->newsize-- >= 0 && (*stack_b))
-			{
-				if (((*stack_a)->nbr > (*stack_b)->nbr || p - r == 0)
-					&& p-- > 0)
-					info->str = ft_string(stack_a, stack_b, info->str, "pa\n");
-				info->str = ft_string(stack_a, stack_b, info->str, "ra\n");
-			}
-			if (info->newsize < repere && (*stack_b))
-			{
-				repere2 = 2;
+			ft_memcpy(&rp, (int [2]){save[2] + 1, save[2] / 2}, 8);
+			ft_fonctiona(stack_a, stack_b, info, rp);
+			if (ft_fonction4(stack_b, save[2], info, save) == 1)
 				break ;
-			}
-			p = repere / 2;
-			r = repere + 1;
-			while ((--r > 0 || p > 0) && info->newsize-- >= 0 && (*stack_b))
-			{
-				if (((*stack_b)->nbr > (*stack_a)->nbr || p - r == 0)
-					&& p-- > 0)
-					info->str = ft_string(stack_a, stack_b, info->str, "pb\n");
-				info->str = ft_string(stack_a, stack_b, info->str, "rb\n");
-			}
+			ft_memcpy(&rp, (int [2]){save[2] + 1, save[2] / 2}, 8);
+			ft_fonctionb(stack_a, stack_b, info, rp);
 		}
-		ft_fonction3(stack_a, stack_b, info, repere2, save_a);
-		repere = repere * 2;
+		ft_fonction3(stack_a, stack_b, info, save);
+		save[2] = save[2] * 2;
 		info->newsize = info->size;
 	}
 	return ;

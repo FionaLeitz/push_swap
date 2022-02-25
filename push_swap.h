@@ -6,7 +6,7 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:30:23 by fleitz            #+#    #+#             */
-/*   Updated: 2022/02/22 17:42:59 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/02/25 12:13:28 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ char	*ft_string(t_stack **stack_a, t_stack **stack_b, char *str, char *add);
 void	ft_push_n2(t_stack **stack_a, t_stack **stack_b, int n, t_args *infos);
 int		ft_new_search(t_stack **stack, int ni, int n2, int size);
 int		ft_search(t_stack **stack, int n, int size);
-
 
 void	ft_big1(t_stack **stack_a, t_stack **stack_b, t_args *infos);
 void	ft_big_lists(t_stack **stck_a, t_stack **stck_b, t_args *info);
