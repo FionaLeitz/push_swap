@@ -6,7 +6,7 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:40:42 by fleitz            #+#    #+#             */
-/*   Updated: 2022/02/25 11:24:35 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/02/25 12:24:41 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,25 @@ void	ft_push_n(t_stack **stack_a, t_stack **stack_b, int n, t_args *infos)
 	infos->str = ft_string(stack_a, stack_b, infos->str, "pb\n");
 }
 
+void	ft_print(t_stack **stack_a, t_stack **stack_b)
+{
+	while ((*stack_a) && (*stack_a)->next)
+	{
+		ft_printf("stack_a->nbr = %d\n", (*stack_a)->nbr);
+		*stack_a = (*stack_a)->next;
+	}
+	if (*stack_a)
+		ft_printf("stack_a->nbr = %d\n\n", (*stack_a)->nbr);
+	while ((*stack_b) && (*stack_b)->next)
+	{
+		ft_printf("stack_b->nbr = %d\n", (*stack_b)->nbr);
+		*stack_b = (*stack_b)->next;
+	}
+	if (*stack_b)
+		ft_printf("stack_b->nbr = %d\n", (*stack_b)->nbr);
+	return ;
+}
+
 void	ft_sort_stack(t_stack **stack_a, t_stack **stack_b, int size, int *tab)
 {
 	t_args	infos;
@@ -87,7 +106,7 @@ void	ft_sort_stack(t_stack **stack_a, t_stack **stack_b, int size, int *tab)
 	infos.str = malloc(sizeof(char));
 	if (infos.str == NULL)
 		return ;
-	if (size > 225)
+	if (size > 2)
 	{
 		ft_big1(stack_a, stack_b, &infos);
 	}
@@ -101,7 +120,8 @@ void	ft_sort_stack(t_stack **stack_a, t_stack **stack_b, int size, int *tab)
 	}
 	infos.str = ft_find_reduce(infos.str);
 	ft_find_suppress(infos.str);
-	ft_printf("%s", infos.str);
+	ft_print(stack_a, stack_b);
+//	ft_printf("%s", infos.str);
 	free(infos.str);
 	return ;
 }

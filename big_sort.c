@@ -6,7 +6,7 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 14:41:04 by fleitz            #+#    #+#             */
-/*   Updated: 2022/02/25 12:07:46 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/02/25 12:31:28 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	ft_big1(t_stack **stack_a, t_stack **stack_b, t_args *info)
 		}
 	}
 	ft_big_lists(stack_a, stack_b, info);
+	return ;
 	ft_end_big_lists(stack_a, stack_b, info);
 	return ;
 }
