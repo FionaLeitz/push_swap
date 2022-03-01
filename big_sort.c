@@ -106,8 +106,12 @@ void	ft_big1(t_stack **stack_a, t_stack **stack_b, t_args *info)
 	info->newsize = info->size / 2;
 	while (info->newsize-- > 0)
 		info->str = ft_string(stack_a, stack_b, info->str, "pb\n");
+	ft_printf("\nPremiere etape :\n");
+	ft_print(stack_a, stack_b);
 	info->newsize = info->size;
 	ft_fonction(stack_a, stack_b, info);
+	ft_printf("Deuxieme etape :\n");
+	ft_print(stack_a, stack_b);
 	ft_fonction2(stack_a, stack_b, info);
 	if (info->newsize == 3)
 	{
@@ -122,6 +126,8 @@ void	ft_big1(t_stack **stack_a, t_stack **stack_b, t_args *info)
 			info->str = ft_string(stack_a, stack_b, info->str, "rb\n");
 		}
 	}
+	ft_printf("Troisieme etape :\n");
+	ft_print(stack_a, stack_b);
 	ft_big_lists(stack_a, stack_b, info);
 	return ;
 	ft_end_big_lists(stack_a, stack_b, info);

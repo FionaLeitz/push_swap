@@ -94,6 +94,9 @@ void	ft_print(t_stack **stack_a, t_stack **stack_b)
 	}
 	if (*stack_b)
 		ft_printf("stack_b->nbr = %d\n", (*stack_b)->nbr);
+	ft_printf("\n");
+	ft_back_one(stack_a);
+	ft_back_one(stack_b);
 	return ;
 }
 
@@ -107,9 +110,7 @@ void	ft_sort_stack(t_stack **stack_a, t_stack **stack_b, int size, int *tab)
 	if (infos.str == NULL)
 		return ;
 	if (size > 2)
-	{
 		ft_big1(stack_a, stack_b, &infos);
-	}
 	else
 	{
 		ft_separate(stack_a, stack_b, tab[size / 2], &infos);
@@ -120,6 +121,7 @@ void	ft_sort_stack(t_stack **stack_a, t_stack **stack_b, int size, int *tab)
 	}
 	infos.str = ft_find_reduce(infos.str);
 	ft_find_suppress(infos.str);
+	ft_printf("Fin :\n");
 	ft_print(stack_a, stack_b);
 //	ft_printf("%s", infos.str);
 	free(infos.str);

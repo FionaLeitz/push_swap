@@ -38,6 +38,7 @@ void	ft_fonction3(t_stack **stack_a, t_stack **stack_b, t_args *info, int *s)
 {
 	int	rp[2];
 
+	ft_printf("newsize = %d\n", info->newsize);
 	if (info->newsize > 0 && (*stack_b))
 	{
 		ft_memcpy(&rp, (int [2]){info->newsize + 1, 0}, sizeof(int) * 2);
@@ -72,23 +73,32 @@ void	ft_big_lists(t_stack **stack_a, t_stack **stack_b, t_args *info)
 	save[2] = 8;
 	info->newsize = info->size;
 	save[0] = 1;
-	while (info->newsize >= save[2] && (*stack_b))
+	while (/*info->newsize >= save[2] && */(*stack_b))
 	{
 		save[1] = (*stack_b)->nbr;
-		if ((*stack_a)->nbr < (*stack_b)->nbr)
+		if ((*stack_a) && (*stack_a)->nbr < (*stack_b)->nbr)
 			save[1] = (*stack_a)->nbr;
-		while (info->newsize >= save[2] && (*stack_b))
+		while (/*info->newsize >= save[2] && */(*stack_b))
 		{
 			ft_memcpy(&rp, (int [2]){save[2] + 1, save[2] / 2}, 8);
-			ft_fonctiona(stack_a, stack_b, info, rp);
-			if (ft_fonction4(stack_b, save[2], info, save) == 1)
-				break ;
-			ft_memcpy(&rp, (int [2]){save[2] + 1, save[2] / 2}, 8);
 			ft_fonctionb(stack_a, stack_b, info, rp);
+			if (ft_fonction4(stack_b, save[2], info, save) == 1)
+			{
+				ft_printf("Fin de little while special:\n");
+				ft_print(stack_a, stack_b);
+				break ;
+			}
+			ft_memcpy(&rp, (int [2]){save[2] + 1, save[2] / 2}, 8);
+			ft_fonctiona(stack_a, stack_b, info, rp);
+			ft_printf("Fin de little while:\n");
+			ft_print(stack_a, stack_b);
 		}
-		ft_fonction3(stack_a, stack_b, info, save);
+
+//		ft_fonction3(stack_a, stack_b, info, save);
 		save[2] = save[2] * 2;
 		info->newsize = info->size;
+		ft_printf("Fin de big while:\n");
+		ft_print(stack_a, stack_b);
 	}
 	return ;
 }

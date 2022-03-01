@@ -75,4 +75,6 @@ int		ft_search(t_stack **stack, int n, int size);
 
 void	ft_big1(t_stack **stack_a, t_stack **stack_b, t_args *infos);
 void	ft_big_lists(t_stack **stck_a, t_stack **stck_b, t_args *info);
+void	ft_print(t_stack **stack_a, t_stack **stack_b);
+
 #endif
