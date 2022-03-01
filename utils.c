@@ -6,7 +6,7 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:40:42 by fleitz            #+#    #+#             */
-/*   Updated: 2022/02/25 12:24:41 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/01 17:49:48 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,9 @@ void	ft_sort_stack(t_stack **stack_a, t_stack **stack_b, int size, int *tab)
 	}
 	infos.str = ft_find_reduce(infos.str);
 	ft_find_suppress(infos.str);
-	ft_printf("Fin :\n");
-	ft_print(stack_a, stack_b);
-//	ft_printf("%s", infos.str);
+//	ft_printf("Fin :\n");
+//	ft_print(stack_a, stack_b);
+	ft_printf("%s", infos.str);
 	free(infos.str);
 	return ;
 }

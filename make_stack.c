@@ -6,7 +6,7 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:09:46 by fleitz            #+#    #+#             */
-/*   Updated: 2022/02/16 12:17:39 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/01 15:44:35 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ t_stack	*ft_back_last(t_stack **stack)
 		return (NULL);
 	while (tmp->next != NULL)
 		tmp = tmp->next;
+	ft_back_one(stack);
 	return (tmp);
 }
