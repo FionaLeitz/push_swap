@@ -6,7 +6,7 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 14:41:04 by fleitz            #+#    #+#             */
-/*   Updated: 2022/03/03 13:34:11 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/03 16:35:00 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,6 @@ void	ft_big1(t_stack **stack_a, t_stack **stack_b, t_args *info)
 			info->str = ft_string(stack_a, stack_b, info->str, "rb\n");
 		}
 	}
-//	ft_printf("Debut :\n");
-//	ft_print(stack_a, stack_b);
 	ft_big_lists(stack_a, stack_b, info);
 	ft_end_big_lists(stack_a, stack_b, info);
 	return ;
