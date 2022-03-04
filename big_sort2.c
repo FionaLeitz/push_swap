@@ -6,13 +6,14 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 09:43:14 by fleitz            #+#    #+#             */
-/*   Updated: 2022/03/04 11:25:13 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 13:11:24 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_fonctiona(t_stack **stck_a, t_stack **stck_b, t_args *info, int *rp)
+// put group in stack_a
+void	ft_put_in_a(t_stack **stck_a, t_stack **stck_b, t_args *info, int *rp)
 {
 	if (info->newsize < rp[0] - 1)
 	{
@@ -33,7 +34,8 @@ void	ft_fonctiona(t_stack **stck_a, t_stack **stck_b, t_args *info, int *rp)
 	}
 }
 
-void	ft_fonctionb(t_stack **stck_a, t_stack **stck_b, t_args *info, int *rp)
+// put group in stack_b
+void	ft_put_in_b(t_stack **stck_a, t_stack **stck_b, t_args *info, int *rp)
 {
 	if (info->newsize < rp[0] - 1)
 	{
@@ -54,27 +56,29 @@ void	ft_fonctionb(t_stack **stck_a, t_stack **stck_b, t_args *info, int *rp)
 	}
 }
 
-void	ft_fonction3(t_stack **stack_a, t_stack **stack_b, t_args *info, int *s)
+// move last group
+void	ft_end(t_stack **stack_a, t_stack **stack_b, t_args *info, int *save)
 {
 	int	rp[2];
 
 	if (info->newsize > 0)
 	{
 		ft_memcpy(&rp, (int [2]){info->newsize + 1, 0}, sizeof(int) * 2);
-		while ((*stack_a)->nbr != s[1] && rp[1]++ >= 0)
+		while ((*stack_a)->nbr != save[1] && rp[1]++ >= 0)
 			*stack_a = (*stack_a)->next;
 		ft_back_one(stack_a);
-		if (s[0] == 2)
+		if (save[0] == 2)
 		{
-			ft_fonctionb(stack_a, stack_b, info, rp);
+			ft_put_in_b(stack_a, stack_b, info, rp);
 			return ;
 		}
 		rp[1] = info->newsize - rp[1];
-		ft_fonctiona(stack_a, stack_b, info, rp);
+		ft_put_in_a(stack_a, stack_b, info, rp);
 	}
 }
 
-int	ft_fonction4(t_stack **stack_a, t_stack **stack_b, t_args *info, int *save)
+// if group is little
+int	ft_little(t_stack **stack_a, t_stack **stack_b, t_args *info, int *save)
 {
 	if (info->newsize <= save[2])
 	{
@@ -94,6 +98,7 @@ int	ft_fonction4(t_stack **stack_a, t_stack **stack_b, t_args *info, int *save)
 	return (0);
 }
 
+// sort 8 by 8, 16 by 16, ...
 void	ft_big_lists(t_stack **stack_a, t_stack **stack_b, t_args *info)
 {
 	int	rp[2];
@@ -110,13 +115,13 @@ void	ft_big_lists(t_stack **stack_a, t_stack **stack_b, t_args *info)
 		while (info->newsize >= save[2] && (*stack_b))
 		{
 			ft_memcpy(&rp, (int [2]){save[2] + 1, save[2] / 2}, 8);
-			ft_fonctiona(stack_a, stack_b, info, rp);
-			if (ft_fonction4(stack_a, stack_b, info, save) == 1)
+			ft_put_in_a(stack_a, stack_b, info, rp);
+			if (ft_little(stack_a, stack_b, info, save) == 1)
 				break ;
 			ft_memcpy(&rp, (int [2]){save[2] + 1, save[2] / 2}, 8);
-			ft_fonctionb(stack_a, stack_b, info, rp);
+			ft_put_in_b(stack_a, stack_b, info, rp);
 		}
-		ft_fonction3(stack_a, stack_b, info, save);
+		ft_end(stack_a, stack_b, info, save);
 		save[2] = save[2] * 2;
 		info->newsize = info->size;
 	}

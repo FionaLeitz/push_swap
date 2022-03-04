@@ -6,7 +6,7 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 14:41:04 by fleitz            #+#    #+#             */
-/*   Updated: 2022/03/04 11:25:12 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 13:11:23 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	ft_use_swap(t_stack **stack_a, t_stack **stack_b, t_args *info)
 	return ;
 }
 
-// sort 
-void	ft_fonction(t_stack **stack_a, t_stack **stack_b, t_args *info)
+// sort 4 per 4
+void	ft_byfour(t_stack **stack_a, t_stack **stack_b, t_args *info)
 {
 	int	rp[2];
 
@@ -77,7 +77,8 @@ void	ft_fonction(t_stack **stack_a, t_stack **stack_b, t_args *info)
 	}
 }
 
-void	ft_fonction2(t_stack **stack_a, t_stack **stack_b, t_args *info)
+// last group might not be a group of 4
+void	ft_lessfour(t_stack **stack_a, t_stack **stack_b, t_args *info)
 {
 	if (info->newsize == 1)
 	{
@@ -101,7 +102,7 @@ void	ft_fonction2(t_stack **stack_a, t_stack **stack_b, t_args *info)
 	}
 }
 
-// put half of stack_a in stack_b, and send to differents steps
+// put half of stack_a in stack_b, and send stacks to differents steps
 void	ft_big1(t_stack **stack_a, t_stack **stack_b, t_args *info)
 {
 	int	r;
@@ -111,8 +112,8 @@ void	ft_big1(t_stack **stack_a, t_stack **stack_b, t_args *info)
 	while (info->newsize-- > 0)
 		info->str = ft_string(stack_a, stack_b, info->str, "pb\n");
 	info->newsize = info->size;
-	ft_fonction(stack_a, stack_b, info);
-	ft_fonction2(stack_a, stack_b, info);
+	ft_byfour(stack_a, stack_b, info);
+	ft_lessfour(stack_a, stack_b, info);
 	if (info->newsize == 3)
 	{
 		if ((*stack_a)->nbr > (*stack_a)->next->nbr)
