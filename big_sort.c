@@ -6,12 +6,13 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 14:41:04 by fleitz            #+#    #+#             */
-/*   Updated: 2022/03/03 16:35:00 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 11:25:12 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// if stack_b is not empty, push all in stack_a in order
 void	ft_end_big_lists(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 {
 	while ((*stack_b) != NULL)
@@ -36,6 +37,7 @@ void	ft_end_big_lists(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 		infos->str = ft_string(stack_a, stack_b, infos->str, "ra\n");
 }
 
+// swap when needed
 void	ft_use_swap(t_stack **stack_a, t_stack **stack_b, t_args *info)
 {
 	if ((*stack_a)->nbr > (*stack_a)->next->nbr)
@@ -45,6 +47,7 @@ void	ft_use_swap(t_stack **stack_a, t_stack **stack_b, t_args *info)
 	return ;
 }
 
+// sort 
 void	ft_fonction(t_stack **stack_a, t_stack **stack_b, t_args *info)
 {
 	int	rp[2];
@@ -98,6 +101,7 @@ void	ft_fonction2(t_stack **stack_a, t_stack **stack_b, t_args *info)
 	}
 }
 
+// put half of stack_a in stack_b, and send to differents steps
 void	ft_big1(t_stack **stack_a, t_stack **stack_b, t_args *info)
 {
 	int	r;

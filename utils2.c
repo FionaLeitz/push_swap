@@ -6,14 +6,13 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:35:36 by fleitz            #+#    #+#             */
-/*   Updated: 2022/02/16 09:53:51 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 10:38:34 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // make movements according to add in create_string
-// utile seulement dans ce fichier
 static void	ft_movements(t_stack **stack_a, t_stack **stack_b, char *str)
 {
 	ft_back_one(stack_a);
@@ -37,7 +36,7 @@ static void	ft_movements(t_stack **stack_a, t_stack **stack_b, char *str)
 	return ;
 }
 
-// ajouter une commande a la string a imprimer a la fin
+// add a command in the string to print in the end
 char	*ft_string(t_stack **stack_a, t_stack **stack_b, char *str, char *add)
 {
 	char	*str2;
@@ -71,7 +70,8 @@ void	ft_push_n2(t_stack **stack_a, t_stack **stack_b, int n, t_args *infos)
 	return ;
 }
 
-// chercher dans quel sens rotate pour faire remonter n en premier
+// search if it is more interesting to rotate or reverse rotate
+// to put n in first position
 int	ft_search(t_stack **stack, int n, int size)
 {
 	int	search;
@@ -93,6 +93,7 @@ int	ft_search(t_stack **stack, int n, int size)
 	return (0);
 }
 
+// search if it is more interesting to move n1 or n2 in first
 int	ft_new_search(t_stack **stack, int n1, int n2, int size)
 {
 	int	search;

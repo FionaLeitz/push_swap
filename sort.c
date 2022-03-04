@@ -6,14 +6,14 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:36:36 by fleitz            #+#    #+#             */
-/*   Updated: 2022/02/16 11:54:13 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 10:45:46 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // the end of move_a
-// utile seulement dans ce fichier
+// all of stack_a is sort in stack_b, need to put it back in stack_a
 static void	ft_end_a(t_stack **stck_a, t_stack **stck_b, int max, t_args *infos)
 {
 	t_stack	*last;
@@ -41,8 +41,8 @@ static void	ft_end_a(t_stack **stck_a, t_stack **stck_b, int max, t_args *infos)
 	return ;
 }
 
-// inside move_a
-// utile seulement dans ce fichier
+// inside move_a, when min of stack_a is found,
+// move in stack_b to place min of stack_a
 static void	ft_move_a_n(t_stack **stck_a, t_stack **stck_b, int n, t_args *info)
 {
 	t_stack	*last;
@@ -61,8 +61,8 @@ static void	ft_move_a_n(t_stack **stck_a, t_stack **stck_b, int n, t_args *info)
 	return ;
 }
 
-// move in a to find next in b
-// utile seulement dans ce fichier
+// move in stack_a to find next in stack_b
+// find min of stack_a to put it in stack_b, repeatedly
 static void	ft_move_a(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 {
 	int		count;
@@ -91,8 +91,7 @@ static void	ft_move_a(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 	return ;
 }
 
-// first step, move in b to put the first of a
-// utile seulement dans ce fichier
+// move in stack_b to put the first of stack_a
 static void	ft_move_b(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 {
 	int		count;
@@ -120,7 +119,7 @@ static void	ft_move_b(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 	return ;
 }
 
-// first step of sorting ?
+// put min and max of stack_a in stack_b
 void	ft_step1(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 {
 	int	min;

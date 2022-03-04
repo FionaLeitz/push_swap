@@ -6,16 +6,13 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:59:44 by fleitz            #+#    #+#             */
-/*   Updated: 2022/02/16 13:55:37 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 10:26:27 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* deuxieme fonction utilisee
-trouver une string dans une autre
-utile seulement dans ce fichier
-*/
+// find a string in another string
 static int	ft_new_strstr(char *haystack, char *needle)
 {
 	int	i;
@@ -34,10 +31,7 @@ static int	ft_new_strstr(char *haystack, char *needle)
 	return (ft_strlen(haystack));
 }
 
-/* troisieme fonction utilisee
-supprimer les parties inutiles
-utile seulement dans ce fichier
-*/
+// suppress useless commands
 static void	ft_suppress(char *str, char *sup, int p)
 {
 	int	count;
@@ -47,9 +41,7 @@ static void	ft_suppress(char *str, char *sup, int p)
 	return ;
 }
 
-/* premiere fonction utilisee
-trouver les parties inutiles
-*/
+// find useless commands
 void	ft_find_suppress(char *str)
 {
 	int	count;
@@ -79,10 +71,7 @@ void	ft_find_suppress(char *str)
 	return ;
 }
 
-/* cinquieme fonction utilisee
-remplacer les parties redondantes
-utile seulement dans ce fichier
-*/
+// reduce double commands
 static char	*ft_reduce(char *str, char *sup, char *rep, int plus)
 {
 	int		count;
@@ -106,9 +95,7 @@ static char	*ft_reduce(char *str, char *sup, char *rep, int plus)
 	return (str);
 }
 
-/* quatrieme fonction utilisee
-trouver les parties redondantes
-*/
+// find double commands
 char	*ft_find_reduce(char *str)
 {
 	int	count;

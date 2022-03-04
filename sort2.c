@@ -6,13 +6,15 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:36:45 by fleitz            #+#    #+#             */
-/*   Updated: 2022/02/16 10:02:35 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 10:45:28 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// utile seulement dans ce fichier
+// the end of move_b2
+// all of stack_b is sorted in stack_a
+// the all list is sorted
 static void	ft_end_b2(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 {
 	t_stack	*last;
@@ -30,7 +32,8 @@ static void	ft_end_b2(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 	return ;
 }
 
-// utile seulement dans ce fichier
+// inside move_b2, when max of stack_b is found,
+// move in stack_a to place max of stack_b
 static void	ft_move_b2_n(t_stack **stk_a, t_stack **stck_b, int n, t_args *info)
 {
 	t_stack	*last;
@@ -49,8 +52,8 @@ static void	ft_move_b2_n(t_stack **stk_a, t_stack **stck_b, int n, t_args *info)
 	return ;
 }
 
-// move in b to find next in a
-// utile seulement dans ce fichier
+// move in stack_b to find next in stack_a
+// find max of stack_b to put it in stack_a, repeatedly
 static void	ft_move_b2(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 {
 	int		count;
@@ -77,8 +80,7 @@ static void	ft_move_b2(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 	return ;
 }
 
-// move in a to put the first of b
-// utile seulement dans ce fichier
+// move in stack_a to put the first of stack_b
 static void	ft_move_a2(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 {
 	int		count;
@@ -104,7 +106,7 @@ static void	ft_move_a2(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 	return ;
 }
 
-// ???
+// put min and max of stack_b in stack_a
 void	ft_step2(t_stack **stack_a, t_stack **stack_b, t_args *infos)
 {
 	int		min;

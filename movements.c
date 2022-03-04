@@ -6,13 +6,13 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 12:17:25 by fleitz            #+#    #+#             */
-/*   Updated: 2022/02/16 11:54:12 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 10:52:33 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// echanger les deux premiers nombres de la stack
+// swap first and second in stack
 void	ft_swap(t_stack **stack)
 {
 	int	tmp;
@@ -24,7 +24,7 @@ void	ft_swap(t_stack **stack)
 	return ;
 }
 
-// passer le premier nombre de la stack, en dernier
+// put first of stack in last
 void	ft_rotate(t_stack **stack)
 {
 	t_stack	*save;
@@ -37,7 +37,7 @@ void	ft_rotate(t_stack **stack)
 	return ;
 }
 
-// passer le dernier nombre de la stack, en premier
+// put last of stack in first
 void	ft_reverse_rotate(t_stack **stack)
 {
 	t_stack	*end;
@@ -54,7 +54,7 @@ void	ft_reverse_rotate(t_stack **stack)
 	return ;
 }
 
-// passer le premier nombre de la stack_b en haut de la stack_a
+// put first of stack_b in first of stack_a
 void	ft_push(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*save;
@@ -83,7 +83,7 @@ void	ft_push(t_stack **stack_a, t_stack **stack_b)
 	return ;
 }
 
-// retrouver le premier element de la stack
+// go back at the beggining of stack
 void	ft_back_one(t_stack **stack)
 {
 	if (*stack == NULL)

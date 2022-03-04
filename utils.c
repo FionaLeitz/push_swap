@@ -6,7 +6,7 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:40:42 by fleitz            #+#    #+#             */
-/*   Updated: 2022/03/03 16:34:41 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 10:20:27 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	ft_max(t_stack **stack)
 }
 
 // separate big numbers in stack_a, and little ones in stack_b
-// utile seulement dans ce fichier
 static void	ft_separate(t_stack **stck_a, t_stack **stck_b, int n, t_args *info)
 {
 	int	count;
@@ -77,30 +76,8 @@ void	ft_push_n(t_stack **stack_a, t_stack **stack_b, int n, t_args *infos)
 	}
 	infos->str = ft_string(stack_a, stack_b, infos->str, "pb\n");
 }
-/*
-void	ft_print(t_stack **stack_a, t_stack **stack_b)
-{
-	while ((*stack_a) && (*stack_a)->next)
-	{
-		ft_printf("stack_a->nbr = %d\n", (*stack_a)->nbr);
-		*stack_a = (*stack_a)->next;
-	}
-	if (*stack_a)
-		ft_printf("stack_a->nbr = %d\n\n", (*stack_a)->nbr);
-	while ((*stack_b) && (*stack_b)->next)
-	{
-		ft_printf("stack_b->nbr = %d\n", (*stack_b)->nbr);
-		*stack_b = (*stack_b)->next;
-	}
-	if (*stack_b)
-		ft_printf("stack_b->nbr = %d\n", (*stack_b)->nbr);
-	ft_printf("\n");
-	ft_back_one(stack_a);
-	ft_back_one(stack_b);
-	return ;
-}
-*/
 
+// send information to fonctions according to the number of arguments
 void	ft_sort_stack(t_stack **stack_a, t_stack **stack_b, int size, int *tab)
 {
 	t_args	infos;

@@ -6,7 +6,7 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 09:43:14 by fleitz            #+#    #+#             */
-/*   Updated: 2022/03/03 17:42:02 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 11:25:13 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,6 @@ void	ft_fonctiona(t_stack **stck_a, t_stack **stck_b, t_args *info, int *rp)
 		info->str = ft_string(stck_a, stck_b, info->str, "ra\n");
 	}
 }
-/*
-int	ft_count(t_stack **stack)
-{
-	int	count;
-
-	count = 1;
-	if (stack == NULL)
-		return (0);
-	while ((*stack)->next)
-	{
-		(*stack) = (*stack)->next;
-		count++;
-	}
-	ft_back_one(stack);
-	return (count);
-}*/
 
 void	ft_fonctionb(t_stack **stck_a, t_stack **stck_b, t_args *info, int *rp)
 {

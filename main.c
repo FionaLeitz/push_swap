@@ -6,31 +6,13 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:28:37 by fleitz            #+#    #+#             */
-/*   Updated: 2022/02/17 11:15:09 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 11:05:12 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-void	ft_print(t_stack **stack_a, t_stack **stack_b)
-{
-	while ((*stack_a) && (*stack_a)->next)
-	{
-		ft_printf("stack_a->nbr = %d\n", (*stack_a)->nbr);
-		*stack_a = (*stack_a)->next;
-	}
-	if (*stack_a)
-		ft_printf("stack_a->nbr = %d\n\n", (*stack_a)->nbr);
-	while ((*stack_b) && (*stack_b)->next)
-	{
-		ft_printf("stack_b->nbr = %d\n", (*stack_b)->nbr);
-		*stack_b = (*stack_b)->next;
-	}
-	if (*stack_b)
-		ft_printf("stack_b->nbr = %d\n", (*stack_b)->nbr);
-	return ;
-}*/
 
+// count the number of arguments if it is a string
 static size_t	ft_countwords(char const *s, char c)
 {
 	size_t	i;
@@ -49,6 +31,7 @@ static size_t	ft_countwords(char const *s, char c)
 	return (countwords);
 }
 
+// if only one argument, split it to have char ** of arguments
 static int	ft_arguments(int argc, char **argv, char ***arguments)
 {
 	if (argc == 1)
@@ -68,6 +51,7 @@ static int	ft_arguments(int argc, char **argv, char ***arguments)
 	return (argc);
 }
 
+// free char ** created with split
 static void	ft_free_arguments(char **arguments, int argc, int repere)
 {
 	int	count;
@@ -84,6 +68,7 @@ static void	ft_free_arguments(char **arguments, int argc, int repere)
 	return ;
 }
 
+// main
 int	main(int argc, char **argv)
 {
 	int		repere;

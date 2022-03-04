@@ -6,19 +6,13 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:59:44 by fleitz            #+#    #+#             */
-/*   Updated: 2022/02/17 10:36:18 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 11:09:32 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// ceci est un fichier qui verifie les cs d'erreurs.
-
-/* deuxieme fonction utilisee
-verifier si les arguments reçus sont bien des nombres,
-et qu'ils ne sont pas trop grands pour des ints
-utile seulement dans ce fichier
-*/
+// check if arguments are numbers, and if they are ints
 static int	ft_digit(int size, char **stack)
 {
 	int	i;
@@ -45,10 +39,7 @@ static int	ft_digit(int size, char **stack)
 	return (1);
 }
 
-/* quatrieme fonction utilisee
-copier long_tab dans int *tab
-utile seulement dans ce fichier
-*/
+// copy long_tab in int *tab
 static int	*ft_intcpy(int size, long int *long_tab)
 {
 	int	*tab;
@@ -67,10 +58,7 @@ static int	*ft_intcpy(int size, long int *long_tab)
 	return (tab);
 }
 
-/* troisieme fonction utilisee
-créer tab en passant par long_tab, et vérifier si les nombres sont des ints
-utile seulement dans ce fichier
-*/
+// create long_tab, check if numbers are ints, and make tab
 static int	*ft_create_tab(int size, char **stack)
 {
 	int			count;
@@ -96,10 +84,7 @@ static int	*ft_create_tab(int size, char **stack)
 	return (tab);
 }
 
-/* cinquieme fonction utilisee
-ranger les nombres dans l'ordre et verifier les doublons
-utile seulement dans ce fichier
-*/
+// sort tab and check there is twice the same
 static int	ft_bubblesort(int size, int *tab)
 {
 	int	count;
@@ -127,10 +112,7 @@ static int	ft_bubblesort(int size, int *tab)
 	return (1);
 }
 
-/* première fonction utilisée.
-verifier les cas d'erreurs, imprimer erreur si besoin,
-et retourner NULL si probleme malloc
-*/
+// check errors
 int	*ft_check_errors(int size, char **stack)
 {
 	int	*tab;

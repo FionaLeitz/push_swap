@@ -6,16 +6,13 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:09:46 by fleitz            #+#    #+#             */
-/*   Updated: 2022/03/01 15:44:35 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 10:56:11 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* deuxieme fonction utilisee
-creer un nouvel element t_stack
-utile seulement dans ce fichier
-*/
+// create new t_stack element
 static t_stack	*ft_stacknew(int nbr)
 {
 	t_stack	*new;
@@ -29,9 +26,7 @@ static t_stack	*ft_stacknew(int nbr)
 	return (new);
 }
 
-/* troisieme fonction utilisee
-ajouter l'element new a la fin de la stack
-*/
+// add new at the end of stack
 void	ft_stackadd_back(t_stack **stack, t_stack *new)
 {
 	t_stack	*save;
@@ -51,9 +46,7 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 	return ;
 }
 
-/*
-ajouter l'element new au debut de la liste
-*/
+// add new at beggining of stack
 void	ft_stackadd_front(t_stack **stack, t_stack *new)
 {
 	ft_back_one(stack);
@@ -65,9 +58,7 @@ void	ft_stackadd_front(t_stack **stack, t_stack *new)
 	return ;
 }
 
-/* premiere fonction utilisee
-creer une stack grace a un char **
-*/
+// create stack with char **
 t_stack	*ft_create_stack(int size, char **argv, int *tab)
 {
 	t_stack	*stack;
@@ -97,9 +88,7 @@ t_stack	*ft_create_stack(int size, char **argv, int *tab)
 	return (stack);
 }
 
-/*
-trouver le dernier element de la stack
-*/
+// find last element of stack
 t_stack	*ft_back_last(t_stack **stack)
 {
 	t_stack	*tmp;

@@ -6,15 +6,13 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:59:44 by fleitz            #+#    #+#             */
-/*   Updated: 2022/02/16 13:20:17 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/04 10:23:12 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* premiere fonction utilisee
-verifier si la liste est deja triée
-*/
+// check if the stack is already sorted
 int	ft_is_sorted(t_stack *stack, int *tab, int size)
 {
 	int	count;
@@ -37,10 +35,7 @@ int	ft_is_sorted(t_stack *stack, int *tab, int size)
 	return (0);
 }
 
-/* troisieme fonction utilisee
-comment trier si il y a 3 nombres
-utile seulement dans ce fichier
-*/
+// sort if only 3 arguments
 static void	ft_three(t_stack **stack)
 {
 	if ((*stack)->nbr > (*stack)->next->nbr)
@@ -65,10 +60,7 @@ static void	ft_three(t_stack **stack)
 	return ;
 }
 
-/* quatrieme fonction utilisee
-comment trier si il y a 4 nombres
-utile seulement dans ce fichier
-*/
+// sort if only 4 arguments
 static void	ft_four(t_stack **stack_a, t_stack **stack_b, int min)
 {
 	if (ft_search(stack_a, min, 4) == 0)
@@ -94,10 +86,7 @@ static void	ft_four(t_stack **stack_a, t_stack **stack_b, int min)
 	return ;
 }
 
-/* cinquieme fonction utilisee
-comment trier si il y a 5 nombres
-utile seulement dans ce fichier
-*/
+// sort if only 5 arguments
 static void	ft_five(t_stack **stack_a, t_stack **stack_b, int *tab)
 {
 	if (ft_search(stack_a, tab[0], 5) == 0)
@@ -123,10 +112,7 @@ static void	ft_five(t_stack **stack_a, t_stack **stack_b, int *tab)
 	return ;
 }
 
-/* deuxieme fonction utilisee
-si moins de 6 nombres, alors j'envoie dans un tri special
-selon le nombre d'arguments
-*/
+// if less than 6 arguments, send stack in the right sorting fonction
 int	ft_under_six(t_stack **stack_a, t_stack **stack_b, int size, int *tab)
 {
 	if (size == 2)
