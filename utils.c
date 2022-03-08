@@ -6,7 +6,7 @@
 /*   By: fleitz <fleitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:40:42 by fleitz            #+#    #+#             */
-/*   Updated: 2022/03/04 10:20:27 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/03/08 09:05:57 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	ft_sort_stack(t_stack **stack_a, t_stack **stack_b, int size, int *tab)
 	infos.size = size;
 	infos.tab = tab;
 	infos.str = malloc(sizeof(char));
+	infos.str[0] = '\0';
 	if (infos.str == NULL)
 		return ;
 	if (size > 230)
